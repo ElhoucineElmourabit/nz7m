@@ -1,0 +1,2984 @@
+You are an assistant for calculating the total cost of school supplies from images of handwritten or printed lists.
+Here is the store's product database in JSON format:
+<START_JSON>
+{[
+{
+"name": "مفتاح القراءة المستوى الاول دفتر الانشطة",
+"price": 100.00
+},
+{
+"name": "اقرا وحدي المتوسط التاني السادسة بطاقات للقراءة الحرة",
+"price": 94.00
+},
+{
+"name": "اكتب وحدي المتوسط 2 السادسة",
+"price": 117.00
+},
+{
+"name": "RIAD ALLOUGHA CM2 LIVRE + CAHIER D'ECRITURE",
+"price": 319.00
+},
+{
+"name": "4 كراسة ارخبيل اللغة العربية",
+"price": 60.00
+},
+{
+"name": "الدليل في تطبيقات اللغة العربية المستوى الخامس ابتدائي",
+"price": 45.00
+},
+{
+"name": "المختار في اللغة العربية السنة الثالثة من التعليم الثانوي الاعدادي",
+"price": 25.00
+},
+{
+"name": "الدليل في تطبيقات اللغة العربية المستوى الثالت ابتدائي",
+"price": 45.00
+},
+{
+"name": "المختار في اللغة العربية السنة الأولى اعدادي",
+"price": 21.00
+},
+{
+"name": "سلسلة الامة قواعد اللغة العربية الميسرة الانشطة التطبيقية السنة الرابعة ابتدائي",
+"price": 30.00
+},
+{
+"name": "سلسلة الأمة في قواعد اللغة العربية الميسرة الأنشطة التطبيقية السنة 6 من التعليم الابتدائي",
+"price": 30.00
+},
+{
+"name": "منار اللغة العربية السادس ابتدائي",
+"price": 25.50
+},
+{
+"name": "الدليل في تطبيقات اللغة العربية المستوى الرابع ابتدائي",
+"price": 40.00
+},
+{
+"name": "الدليل في تطبيقات اللغة العربية 1",
+"price": 45.00
+},
+{
+"name": "سلسلة الأمة في قواعد اللغة العربية الميسرة 5 إبتدائي",
+"price": 30.00
+},
+{
+"name": "متعتي في القراءة والكتابة التفاعلية 2 ابتدائي",
+"price": 40.00
+},
+{
+"name": "مذكرة الدروس اليومية التعليم الإبتدائي النموذج 2",
+"price": 30.00
+},
+{
+"name": "الرائد في اللغة العربية للسنة الثانية سلك الباكلوريا",
+"price": 33.00
+},
+{
+"name": "مذكرة الدروس اليومية التعليم الإبتدائي النموذج 1",
+"price": 40.00
+},
+{
+"name": "اللص و الكلاب . نجيب محفوض",
+"price": 30.00
+},
+{
+"name": "الدليل في تطبيقات اللغة العربية2 السنة الثانیة من التعلیم الابتدائي",
+"price": 45.00
+},
+{
+"name": "مجموعة الفانوس 5/6",
+"price": 264.00
+},
+{
+"name": "رواية الأيام طه حسين",
+"price": 40.00
+},
+{
+"name": "في رحاب التربية الإسلامية - السنة الثانية من سلك البكالوريا",
+"price": 32.00
+},
+{
+"name": "التجديد في دفتر التقصي 6",
+"price": 25.00
+},
+{
+"name": "رائد المستقبل الجديد 4/5",
+"price": 208.00
+},
+{
+"name": "سلسلة الأمة في قواعد اللغة العربية السنة الثانية ابتدائي",
+"price": 30.00
+},
+{
+"name": "بداية التعلم التواصل الشفهي 5/6",
+"price": 22.50
+},
+{
+"name": "مجموعة الفانوس 4/5",
+"price": 210.00
+},
+{
+"name": "كتابي في اللغة العربية (المكتبة الوطنية ) طبعة الجديدة المستوى التاني ابتدائي",
+"price": 18.00
+},
+{
+"name": "المستوى الاول ابتدائي , كتابي في اللغة العربية طبعة الجديدة",
+"price": 15.50
+},
+{
+"name": "المفيد في اللغة العربية السنة الثالثة من التعليم الابتدائي",
+"price": 23.50
+},
+{
+"name": "المفيد في اللغة العربية السنة الاولى ابتدائي",
+"price": 15.00
+},
+{
+"name": "المنير في اللغة العربية السنة الرابعة",
+"price": 23.50
+},
+{
+"name": "كتابي في اللغة العربية السنة السادسة ابتدائي الطبعة الجديدة شتنبر 2020",
+"price": 25.50
+},
+{
+"name": "المفيد في اللغة العربية 4 إبتدائي",
+"price": 23.50
+},
+{
+"name": "في رحاب اللغة العربية السنة التانية اعدادي",
+"price": 23.00
+},
+{
+"name": "مفكرتي للنصوص و المراسلات المدرسية",
+"price": 28.00
+},
+{
+"name": "الجديد في اللغة العربية السنة الرابعة ابتدائي",
+"price": 23.50
+},
+{
+"name": "الرائد في اللغة العربية السنة الأولى اعدادي طبعة جديدة",
+"price": 21.50
+},
+{
+"name": "مرشدي في اللغة العربية السنة الخامسة ابتدائي",
+"price": 25.00
+},
+{
+"name": "المفيد في الكتابة خط-نقل-املاء-تعبير كتابي",
+"price": 14.00
+},
+{
+"name": "في رحاب اللغة العربية السنة الثانية ابتدائي",
+"price": 18.00
+},
+{
+"name": "مرشدي في اللغة العربية الثانية اعدادي",
+"price": 23.00
+},
+{
+"name": "A5 مرشدي الي واجباتي المدرسية",
+"price": 22.00
+},
+{
+"name": "سلسلة الأمة في قواعد اللغة العربية الميسرة القراءة بالطريقة المقطعية السنة الأولى ابتدائي",
+"price": 30.00
+},
+{
+"name": "مرشدي في اللغة العربية المستوى الثالث اعدادي",
+"price": 25.00
+},
+{
+"name": "مجموعة رؤية 5/6 المشاريع التربوية للتعليم الأولي المجموعة كاملة",
+"price": 122.50
+},
+{
+"name": "الأساسي في اللغة العربية السنة الثالثة اعدادي",
+"price": 25.00
+},
+{
+"name": "منار اللغة العربية السنة الأولى باكلوريا مسالك العلوم",
+"price": 32.00
+},
+{
+"name": "الرائد في اللغة العربية جدع مشترك",
+"price": 27.00
+},
+{
+"name": "في الطفولة - عبد المجيد بنجلون الاولى اعدادي",
+"price": 52.00
+},
+{
+"name": "الواضح في النشاط العلمي3 - كتاب التلميذ والتلميذة - السنة الثالثة من التعليم الابتدائي",
+"price": 11.00
+},
+{
+"name": "croque-page CM1",
+"price": 327.00
+},
+{
+"name": "Lecture Piano CP Méthode de Lecture + Cahier d'exercices et Cahier d'écriture",
+"price": 387.00
+},
+{
+"name": "Le français en chantier 6e",
+"price": 270.00
+},
+{
+"name": "L'art du francais troisième année du cycle secondaire collégial",
+"price": 285.00
+},
+{
+"name": "Le Français en chantier 3e Manuel + cahier d’activités",
+"price": 339.00
+},
+{
+"name": "Mots en herbe CM2",
+"price": 345.00
+},
+{
+"name": "Pack Les couleurs arc en ciel Petit Section",
+"price": 215.00
+},
+{
+"name": "Le nouveau mille feuille CE1",
+"price": 296.00
+},
+{
+"name": "Jardin des lettres 3",
+"price": 327.00
+},
+{
+"name": "Archipel des mots CP",
+"price": 165.00
+},
+{
+"name": "En avant lire le préscolaire 5/6 Projet 1+2+3+ livre d'écriture",
+"price": 238.00
+},
+{
+"name": "Collection Apostrophe Cahier d'écriture CP - NE",
+"price": 47.00
+},
+{
+"name": "Pack Alouette CE2 manuel + cahier d'activites",
+"price": 285.00
+},
+{
+"name": "Pack Alouette CM1 manuel + cahier d'activites",
+"price": 316.00
+},
+{
+"name": "Archimaths ce2 fichier + memo",
+"price": 191.50
+},
+{
+"name": "La Grammaire par les exercices 6e * Cahier d'exercices (Ed. 2021)",
+"price": 85.00
+},
+{
+"name": "Mosaïque EB9 3ème Pack Complet",
+"price": 330.00
+},
+{
+"name": "Cahier du jour cahier du soir tout en un cm2 Réf : 3264",
+"price": 141.00
+},
+{
+"name": "Le nouveau Mille feuille CE2 cahier d'activités",
+"price": 307.50
+},
+{
+"name": "A nous le français CE6",
+"price": 204.00
+},
+{
+"name": "La Source du Français CM1 - Manuel de L'élève + Cahier d'activités",
+"price": 240.00
+},
+{
+"name": "TextoCollège 6e - Français - Livre de l'élève",
+"price": 310.00
+},
+{
+"name": "Collection Ribambella CP",
+"price": 149.00
+},
+{
+"name": "Je progresse en EXPRESSION ECRITE CM1",
+"price": 62.00
+},
+{
+"name": "Terre des Lettres - 6ème - Livre de l'Elève - Grand Format - Nathan",
+"price": 310.00
+},
+{
+"name": "Outils pour le français CE2",
+"price": 207.50
+},
+{
+"name": "Parcours CP Manuel + cahier d'activites 1 et 2",
+"price": 423.00
+},
+{
+"name": "Pack Nénuphar CE6 cahier de savoir et d'activité et cahier d'exercices",
+"price": 295.00
+},
+{
+"name": "Français l'envol des lettres 5e",
+"price": 393.00
+},
+{
+"name": "Pack La boite aux lettre GS lecture + écriture + exercices + la boite aux chiffres",
+"price": 315.00
+},
+{
+"name": "Pack Macha milou et moi GS",
+"price": 230.00
+},
+{
+"name": "Français Tronc commun CDPL adapté au programme marocain",
+"price": 185.00
+},
+{
+"name": "Mes apprentissages en francais 3",
+"price": 20.00
+},
+{
+"name": "Mots en herbe CE2",
+"price": 339.00
+},
+{
+"name": "Cahier d'écritures CM2 SEDRAP/ CDPL",
+"price": 65.00
+},
+{
+"name": "Français l'envol des lettres 4e",
+"price": 393.00
+},
+{
+"name": "Pépites CM2 manuel + cahier d'activités",
+"price": 342.50
+},
+{
+"name": "Livre unique Français 3e cycle 4 le Robert",
+"price": 330.00
+},
+{
+"name": "Texto Collège 4e - Français",
+"price": 356.00
+},
+{
+"name": "Arc-en-ciel GS lecture +math +cahier d'exercices+ cahier d'écriture",
+"price": 310.00
+},
+{
+"name": "Mot en herbe CM1",
+"price": 345.00
+},
+{
+"name": "Le nouveau Vivre le Français CE1",
+"price": 299.00
+},
+{
+"name": "Je progresse en écriture CP",
+"price": 40.00
+},
+{
+"name": "la reine de fourmis a disparu ( magnard)",
+"price": 69.00
+},
+{
+"name": "Mes apprentissages en Français 2e",
+"price": 10.00
+},
+{
+"name": "Archilecture CE2 manuel + cahier 1 et 2",
+"price": 265.00
+},
+{
+"name": "L'art du français 4 Livre unique + cahier d'activites",
+"price": 285.00
+},
+{
+"name": "Graine de mot Français CM2",
+"price": 240.00
+},
+{
+"name": "Jardin des lettres 4éme 2 A.C",
+"price": 327.00
+},
+{
+"name": "Archilecture CM1 manuel + cahier 1 et 2",
+"price": 265.00
+},
+{
+"name": "Mes apprentissage en français 5e AEP édition 2021",
+"price": 21.50
+},
+{
+"name": "les albums kimamila CP série blanche",
+"price": 285.00
+},
+{
+"name": "Citronnelle Français CE1 manuel + cahier d'activités",
+"price": 242.00
+},
+{
+"name": "la-cité-des-sciences 6 éme",
+"price": 51.50
+},
+{
+"name": "Le Français Méthodique 2de/1re",
+"price": 385.00
+},
+{
+"name": "Pack Mona et ses amis CP ( édition 2018) +cahier d'exercices 1 et 2 + cahier d'écritures",
+"price": 433.50
+},
+{
+"name": "Pépites CE6 + cahier d'activite CE6",
+"price": 394.00
+},
+{
+"name": "Français 5e livre unique bordas textes langages",
+"price": 239.00
+},
+{
+"name": "Je lis et j'écris avec salto",
+"price": 157.50
+},
+{
+"name": "Cahier de la luciole ce6 découverte de monde",
+"price": 93.00
+},
+{
+"name": "Pépites CE2 manuel + cahier d’activités",
+"price": 342.00
+},
+{
+"name": "le reflet de sam et autres pièces Bibliobus",
+"price": 123.00
+},
+{
+"name": "les lettres de mon moulin'' alphones daudet biblio college",
+"price": 47.00
+},
+{
+"name": "Le tour du monde en quatre-vingts jour - JULES VERNE",
+"price": 47.00
+},
+{
+"name": "Tam tam 3/4",
+"price": 310.00
+},
+{
+"name": "Dictionnaire Robert BENJAMIN",
+"price": 75.00
+},
+{
+"name": "Texto Collège 3e livre unique",
+"price": 356.00
+},
+{
+"name": "Pack la boite aux lettres CE6 Lecture + Grammaire + Expression",
+"price": 270.00
+},
+{
+"name": "Livre Unique Français 4 edition Bordas",
+"price": 239.00
+},
+{
+"name": "l'écriture de A à Z méthode d'apprentissage",
+"price": 17.00
+},
+{
+"name": "Je progresse en écriture 3éme année primaire CE2",
+"price": 40.00
+},
+{
+"name": "Pépites CM1 manuel + cahier d'activités",
+"price": 342.00
+},
+{
+"name": "Mes apprentissages en français 4",
+"price": 21.00
+},
+{
+"name": "Colibris Français 5e",
+"price": 228.00
+},
+{
+"name": "Pack Coquelicot CM1 manuel + cahier d'activités et écriture",
+"price": 240.00
+},
+{
+"name": "Le nouveau vivre le français CP",
+"price": 299.00
+},
+{
+"name": "Pack Croque feuilles CM2 Manuel + cahier d'exercices + feuilles d'oral",
+"price": 367.50
+},
+{
+"name": "Bibliobus N° 2 '' la barbe bleue CM2",
+"price": 119.00
+},
+{
+"name": "Parcours français 3e collège manuel élève 2018",
+"price": 21.00
+},
+{
+"name": "Croque-feuilles CE2 Manuel+ cahier d'exercices + feuilles d'oral",
+"price": 367.50
+},
+{
+"name": "Le bibliobus le chat botté et autres histoires",
+"price": 119.00
+},
+{
+"name": "Maxi math le Manuel 1 année collège 1AC",
+"price": 48.00
+},
+{
+"name": "Pack Croque-feuilles CM1 Manuel + cahier d'exercices + Feuilles d'oral",
+"price": 367.50
+},
+{
+"name": "LES MATHS AVEC LéONIE CP CAHIER 1 ET CAHIER 2 BORDAS éditeur",
+"price": 177.00
+},
+{
+"name": "Projet vision 4/5",
+"price": 122.50
+},
+{
+"name": "Coquelicot CE1 Manuel + cahier d’activités + cahier d’écriture",
+"price": 290.00
+},
+{
+"name": "Parcours français 6éme primaire élève",
+"price": 22.00
+},
+{
+"name": "Pack vision 5/6 pack complet",
+"price": 122.50
+},
+{
+"name": "Le nouveau vivre le français ce6",
+"price": 304.00
+},
+{
+"name": "Coquelicot CE2 Manuel + cahier d’activités",
+"price": 240.00
+},
+{
+"name": "Pour comprendre les mathématique grande section",
+"price": 123.00
+},
+{
+"name": "Pépites CE1 manuel + cahier d'activités",
+"price": 333.50
+},
+{
+"name": "Parcours français 2e collège manuel élève 2018",
+"price": 17.00
+},
+{
+"name": "Pack la boite aux lettres CP livre, Ecriture, Expression et Grammaire",
+"price": 290.00
+},
+{
+"name": "Cahier d'ecritures CE1 SEDRAP/ CDPL",
+"price": 68.00
+},
+{
+"name": "Croque-feuilles 6ème manuel + fichier d'exercices CE6",
+"price": 320.00
+},
+{
+"name": "Pack Learn with us 1 SB + WB",
+"price": 211.00
+},
+{
+"name": "Ali baba et 40 voleurs et autres contes",
+"price": 78.00
+},
+{
+"name": "Pack Coccinelle C.E 2 manuel + cahier d'activité + Cahier d'écritures nouvelle édition 2022",
+"price": 382.00
+},
+{
+"name": "Mot de passe CE1 manuel + cahier d'activité",
+"price": 326.00
+},
+{
+"name": "Pack Coccinelle CE1 Manuel + Cahier d’activité 1 et 2 + Cahier d'écriture",
+"price": 458.00
+},
+{
+"name": "Rives bleues 5éme 1 A,C",
+"price": 215.00
+},
+{
+"name": "Mot de passe CE2 manuel + cahier d'activités",
+"price": 341.00
+},
+{
+"name": "Pack Coccinelle CP Manuel + Cahier d’activités 1 et 2 + Cahier d'écritures nouvelle édition 2022",
+"price": 457.00
+},
+{
+"name": "Coquelicot CE6 Manuel + cahier d’activités",
+"price": 247.00
+},
+{
+"name": "Rives bleues 4éme ( 2éme année collège)",
+"price": 215.00
+},
+{
+"name": "Pack Coccinelle CM2 Manuel + cahier d’activités nouvelle édition 2022",
+"price": 310.00
+},
+{
+"name": "Le nouveau vivre le français CM1",
+"price": 304.00
+},
+{
+"name": "Taoki et compagnie CP cahier d'activités 1 et 2 + cahier d’écriture",
+"price": 460.00
+},
+{
+"name": "Rives bleues 6 eme AEP CE6",
+"price": 205.00
+},
+{
+"name": "Bled conjugaison éd hachette",
+"price": 122.00
+},
+{
+"name": "Collection Minibus petit section 3/4",
+"price": 225.00
+},
+{
+"name": "Mes apprentissages en français 6ème",
+"price": 22.00
+},
+{
+"name": "Collection Minibus moyenne section 4-5 ans",
+"price": 225.00
+},
+{
+"name": "Espace-mots cm2 livre français",
+"price": 213.00
+},
+{
+"name": "Rives bleues 3e.AC",
+"price": 215.00
+},
+{
+"name": "Le nouveau vivre le français ce2",
+"price": 299.00
+},
+{
+"name": "Espace-mots ce2 livre français + cahier d'activité",
+"price": 307.00
+},
+{
+"name": "Coquelicot CP manuel + cahier d'activité + cahier d'écriture",
+"price": 291.00
+},
+{
+"name": "COLLECTION Minibus grand section 5 - 6 ans",
+"price": 308.00
+},
+{
+"name": "Aux 4 vents 5/6 GS Livre de l'élève + Cahier d'exercices 1 et 2 + Cahier d'écriture",
+"price": 414.00
+},
+{
+"name": "Le nouveau vivre le français cm2",
+"price": 304.00
+},
+{
+"name": "Top Kid's 4 sb+wk",
+"price": 165.00
+},
+{
+"name": "TOP KIDS 2 STUDENT BOOK - WORKBOOK",
+"price": 165.00
+},
+{
+"name": "impact foundation student's book + workbook",
+"price": 290.00
+},
+{
+"name": "Score high in English 4",
+"price": 149.00
+},
+{
+"name": "Score high in English 6",
+"price": 149.00
+},
+{
+"name": "Upload 3",
+"price": 150.00
+},
+{
+"name": "Scope 2",
+"price": 264.00
+},
+{
+"name": "upload 4",
+"price": 150.00
+},
+{
+"name": "New enjoy english 6e",
+"price": 278.00
+},
+{
+"name": "Smiles 6 Pupil's Book and activity book",
+"price": 195.00
+},
+{
+"name": "Tiger Time 4 SB with eBOOK + WB",
+"price": 220.00
+},
+{
+"name": "I Bet You Can! Anglais 3e Pack - Manuel élève + Workbook - ISBN 978-2-210-11393-0",
+"price": 310.00
+},
+{
+"name": "Fusion 5 Class Book et Workbook",
+"price": 297.00
+},
+{
+"name": "Prepare 1 (A1) Pack Complet",
+"price": 354.00
+},
+{
+"name": "Gateway to english2 WorkBook 2e Bac",
+"price": 33.00
+},
+{
+"name": "On screen 2",
+"price": 270.00
+},
+{
+"name": "English steps 5 for primary schools student's book & workbook",
+"price": 120.00
+},
+{
+"name": "Pack Learn with us 6 SB + WB",
+"price": 211.00
+},
+{
+"name": "Power Up 3 Pupil's book + Activity book",
+"price": 355.00
+},
+{
+"name": "Smiles 1",
+"price": 185.00
+},
+{
+"name": "English Plus 2 ( Student's book + workbook)",
+"price": 280.00
+},
+{
+"name": "Top kid's 1 SB + WB",
+"price": 165.00
+},
+{
+"name": "Shine on 4 student book and extra practice",
+"price": 105.00
+},
+{
+"name": "Kid's box 6 ( pupil's book/ activity book )",
+"price": 285.00
+},
+{
+"name": "TOP KIDS 3 STUDENT BOOK - WORKBOOK",
+"price": 165.00
+},
+{
+"name": "Impact 1 student book +workbook",
+"price": 290.00
+},
+{
+"name": "Let's go level 5 Student book + Workbook 5th edition",
+"price": 238.00
+},
+{
+"name": "I wonder starter Student's book + workbook",
+"price": 200.00
+},
+{
+"name": "Pack Pippa and pop 1",
+"price": 300.00
+},
+{
+"name": "English in Mind 1",
+"price": 269.00
+},
+{
+"name": "TOP KIDS 5 STUDENT BOOK - WORKBOOK",
+"price": 165.00
+},
+{
+"name": "Happy Hearts 1 student's book + activity book",
+"price": 150.00
+},
+{
+"name": "Explore our World second Edition 3",
+"price": 210.00
+},
+{
+"name": "Protect ED Level 3 SB+WB + Guide des parents",
+"price": 130.00
+},
+{
+"name": "Score high in English 1",
+"price": 125.00
+},
+{
+"name": "Score High in English 2",
+"price": 125.00
+},
+{
+"name": "Super magic 4 ( student's book + workbook )",
+"price": 150.00
+},
+{
+"name": "Bounce now 5",
+"price": 110.00
+},
+{
+"name": "Tiger Time 2 SB with eBOOK + WB",
+"price": 220.00
+},
+{
+"name": "Pack Bright ideas 6 sb+ wb",
+"price": 408.00
+},
+{
+"name": "Pack Bright ideas 1 sb+ wb",
+"price": 408.00
+},
+{
+"name": "Pack Bright ideas 4 sb+ wb",
+"price": 408.00
+},
+{
+"name": "Family and friends 1 Student book+ work book",
+"price": 312.00
+},
+{
+"name": "Pack Learn with us 2 SB + WB",
+"price": 211.00
+},
+{
+"name": "Power Up 1 Pupil's book + Activity book",
+"price": 355.00
+},
+{
+"name": "Pack Solutions 3ed Pre-intermediate Sb + Wb",
+"price": 315.00
+},
+{
+"name": "Fusion 4 sb+wb",
+"price": 297.00
+},
+{
+"name": "Fusion Starter Student Book 1 +WB",
+"price": 252.00
+},
+{
+"name": "Think 4 B2 SBK+WBK 2nd Ed",
+"price": 340.00
+},
+{
+"name": "Pack Learn with us 4 SB + WB",
+"price": 211.00
+},
+{
+"name": "Pack Bright ideas 3 sb+ wb",
+"price": 408.00
+},
+{
+"name": "Pippa & Pop 3 Pack Complet",
+"price": 310.00
+},
+{
+"name": "Pack Hot shots 3 Student book + work book",
+"price": 265.00
+},
+{
+"name": "Pack Learn with us 3 SB + WB",
+"price": 211.00
+},
+{
+"name": "English steps 4 sb+wb",
+"price": 120.00
+},
+{
+"name": "Pack Bright ideas 2 sb+ wb",
+"price": 408.00
+},
+{
+"name": "Family and Friends 5",
+"price": 318.00
+},
+{
+"name": "Let's go level 6 Student book + Workbook 5th edition",
+"price": 238.00
+},
+{
+"name": "Pack On Screen 3 sb + wb",
+"price": 270.00
+},
+{
+"name": "Pack Learn with us 5 SB + WB",
+"price": 211.00
+},
+{
+"name": "Pack Solutions 3ed Intermediate Sb + Wb",
+"price": 315.00
+},
+{
+"name": "On Screen B1 (Pack SB + Workbook & Grammar book",
+"price": 295.00
+},
+{
+"name": "Shine on 3 student book and extra practice",
+"price": 105.00
+},
+{
+"name": "Kid's box 1 (Pupil's book + activity book)",
+"price": 285.00
+},
+{
+"name": "Kid's box 2 ( pupil's book / activity book)",
+"price": 285.00
+},
+{
+"name": "Kid's box 3 (Pupil's book + activity book) NEW GEN",
+"price": 285.00
+},
+{
+"name": "Kid's box 4 ( pupil's book / activity book)",
+"price": 285.00
+},
+{
+"name": "Kid's box starter updated second edition",
+"price": 150.00
+},
+{
+"name": "Fun for starters SB+WB 4th edition",
+"price": 149.00
+},
+{
+"name": "Kid's zone 2 Pupil's Book + Activity Book",
+"price": 240.00
+},
+{
+"name": "Kid's box 5 ( Pupil's book + activity book )",
+"price": 285.00
+},
+{
+"name": "Think 1 A2 SBK+WBK 2nd Ed",
+"price": 340.00
+},
+{
+"name": "kid's zone 3",
+"price": 240.00
+},
+{
+"name": "Pack Everybody up 1 sb + wb",
+"price": 274.00
+},
+{
+"name": "Think starter student's book work book",
+"price": 330.00
+},
+{
+"name": "Pack Everybody up 3 sb + wb",
+"price": 274.00
+},
+{
+"name": "Fun for Flyers SB+WB 4th edition",
+"price": 149.00
+},
+{
+"name": "Think 3 B1+ SBK+WBK 2nd Ed",
+"price": 340.00
+},
+{
+"name": "Kid's Zone 4 student's book + workbook",
+"price": 220.00
+},
+{
+"name": "Power Up 2 Pupil's book + Activity book",
+"price": 355.00
+},
+{
+"name": "Pack Everybody up 4 sb + wb",
+"price": 274.00
+},
+{
+"name": "Compact key for schools second edition",
+"price": 265.00
+},
+{
+"name": "Happy campers 2 sb + wb",
+"price": 120.00
+},
+{
+"name": "Pack Bright ideas 5 sb+ wb",
+"price": 408.00
+},
+{
+"name": "English steps 2 sb+wb",
+"price": 120.00
+},
+{
+"name": "Pack Everybody up 6 sb + wb",
+"price": 274.00
+},
+{
+"name": "Espace-mots Français CM1 Manuel",
+"price": 213.00
+},
+{
+"name": "Cap sciences CE1",
+"price": 98.00
+},
+{
+"name": "Sciences experimentales et technologie CM2 Magnard",
+"price": 128.50
+},
+{
+"name": "TOP Sciences CM2",
+"price": 199.00
+},
+{
+"name": "Sciences de la vie et de la terre CE6 bordas",
+"price": 319.00
+},
+{
+"name": "Je progresse en sciences et technologies CM2",
+"price": 80.00
+},
+{
+"name": "Sciences et Technologies cycle 3 / 6e - livre élève -",
+"price": 323.00
+},
+{
+"name": "TOP Sciences CP",
+"price": 197.00
+},
+{
+"name": "TOP Sciences CM1",
+"price": 199.00
+},
+{
+"name": "TOP Sciences CE1",
+"price": 199.00
+},
+{
+"name": "TOP Sciences 6AP",
+"price": 199.00
+},
+{
+"name": "Les cahiers de la luciole CM1 Sciences et technologie",
+"price": 80.00
+},
+{
+"name": "Accro sciences 6 éme année de l'enseignement primaire ( programme Marrocain) CE6",
+"price": 47.50
+},
+{
+"name": "Mon labo en sciences CE1",
+"price": 50.00
+},
+{
+"name": "المفيد في النشاط العلمي السنة الثانية من التعليم الإبتدائي",
+"price": 10.00
+},
+{
+"name": "Les cahiers de la luciole CM2 Sciences et technologie",
+"price": 80.00
+},
+{
+"name": "Mon labo en sciences CP",
+"price": 50.00
+},
+{
+"name": "Les cahiers de la luciole CE1 Questionner le monde",
+"price": 80.00
+},
+{
+"name": "Les cahiers de la luciole CE2 Questionner le monde",
+"price": 80.00
+},
+{
+"name": "L'archipel des sciences CE2",
+"price": 79.00
+},
+{
+"name": "Accro sciences CE2",
+"price": 47.50
+},
+{
+"name": "Objectif sciences plus CM1",
+"price": 125.00
+},
+{
+"name": "Maxi SVT 1ère année du Cycle Secondaire Collégial",
+"price": 28.00
+},
+{
+"name": "L'archipel des Sciences CP",
+"price": 79.00
+},
+{
+"name": "Mon labo en sciences CE6",
+"price": 50.00
+},
+{
+"name": "Je progresse en sciences et technologies CP",
+"price": 75.00
+},
+{
+"name": "Accro sciences CE1",
+"price": 47.50
+},
+{
+"name": "الواضح في النشاط العلمي 5 إبتدائي تلميذ 2020",
+"price": 11.00
+},
+{
+"name": "Accro sciences CP",
+"price": 47.50
+},
+{
+"name": "Apostro' Science CE2",
+"price": 65.00
+},
+{
+"name": "Je progresse en sciences et technologies CE2",
+"price": 75.00
+},
+{
+"name": "Je progresse en sciences et technologies CM1",
+"price": 80.00
+},
+{
+"name": "Accro sciences CM2",
+"price": 47.50
+},
+{
+"name": "Les sciences au quotidien cm2",
+"price": 91.00
+},
+{
+"name": "Objectif sciences PLUS CE6",
+"price": 130.00
+},
+{
+"name": "Les cahiers istra questionner le monde CE2 Adapté au programme marocain",
+"price": 82.00
+},
+{
+"name": "Les cahiers istra sciences CP Adapté au programme marocain",
+"price": 77.00
+},
+{
+"name": "Les cahiers istra sciences CE1 Adapté au programme marocain",
+"price": 77.00
+},
+{
+"name": "Les Cahiers de la luciole CM2 programme marocain",
+"price": 97.00
+},
+{
+"name": "Les cahiers de la luciole CM1 édition 2021 Sciences programme marocain",
+"price": 97.00
+},
+{
+"name": "Les cahiers de la luciole sciences CE2 découverte du monde Programme marocain",
+"price": 81.00
+},
+{
+"name": "Les Cahiers Istra Sciences CM2",
+"price": 90.00
+},
+{
+"name": "منهل النشاط العلمي السنة الخامسة ابتدائي",
+"price": 11.00
+},
+{
+"name": "Les cahiers de la luciole CP 2021",
+"price": 70.00
+},
+{
+"name": "الأساسي في النشاط العلمي للسنة الأولى من التعليم الإبتدائي",
+"price": 7.50
+},
+{
+"name": "La cité des Sciences CE1",
+"price": 51.50
+},
+{
+"name": "فضاء النشاط العلمي السنة الاولى ابتدائي",
+"price": 7.50
+},
+{
+"name": "المفيد في النشاط العلمي للسنة السادسة إبتدائي",
+"price": 11.00
+},
+{
+"name": "التجديد في النشاط العلمي طبعة جديدة و منقحة للسنة السادسة إبتدائي",
+"price": 11.00
+},
+{
+"name": "Les cahier de la luciole questionner le monde CE1",
+"price": 80.00
+},
+{
+"name": "Les cahier de la Luciole CP Programme 2016",
+"price": 80.00
+},
+{
+"name": "Les cahiers de la luciole -Sciences et technologie- CM2",
+"price": 81.00
+},
+{
+"name": "Objectif sciences plus CP",
+"price": 105.00
+},
+{
+"name": "La cite des Sciences CE2",
+"price": 51.50
+},
+{
+"name": "Les cahiers de la luciole CM1 édition 2017 Sciences et technologie",
+"price": 81.00
+},
+{
+"name": "Les cahiers de la luciole CP Questionner le monde",
+"price": 80.00
+},
+{
+"name": "Les cahier de la luciole questonner le monde CE2",
+"price": 80.00
+},
+{
+"name": "La cité des Sciences CM2",
+"price": 51.50
+},
+{
+"name": "Étincelle SVT Manuel de l’élève TC scientifique & technologie",
+"price": 49.00
+},
+{
+"name": "Etincelle Physique chimie 1 Bac Sc Ex",
+"price": 75.00
+},
+{
+"name": "Physique chimie plus manuel d'élève Tronc Commun OPTION FRANCAIS",
+"price": 150.00
+},
+{
+"name": "Collection Sigma physique chimie 1AC documents couleurs",
+"price": 30.00
+},
+{
+"name": "Collection Sigma physique chimie 3AC documents couleurs",
+"price": 30.00
+},
+{
+"name": "Etincelle Physique chimie 3AC cahier d'actiités",
+"price": 90.00
+},
+{
+"name": "Collection Sigma physique chimie 2AC documents couleurs",
+"price": 30.00
+},
+{
+"name": "Etincelle physique chimie 1 A.C manuel de l'élève",
+"price": 35.00
+},
+{
+"name": "Etincelle physique chimie 3 A.C manuel de l'élève",
+"price": 35.00
+},
+{
+"name": "Mon grand labo en PC 1er AC",
+"price": 40.00
+},
+{
+"name": "L'archipel de physique chimie Tronc commun",
+"price": 157.50
+},
+{
+"name": "L'archipel de Physique Chimie 2AC",
+"price": 168.00
+},
+{
+"name": "L'archipel de Physique Chimie 3éme A.C éd 2021",
+"price": 168.00
+},
+{
+"name": "LES CRACKS en physique Chimie 2 AC",
+"price": 130.00
+},
+{
+"name": "L'univers physique chimie 3éme année collège",
+"price": 185.00
+},
+{
+"name": "L'archipel de chimie 1bac SC.M/SC.EX",
+"price": 115.50
+},
+{
+"name": "L'archipel de physique1ére année bac sc.m-s.ex",
+"price": 136.50
+},
+{
+"name": "Univers Plus physique chimie 2AC",
+"price": 35.00
+},
+{
+"name": "AL Moufid en Physique Chimie 1er AC",
+"price": 35.00
+},
+{
+"name": "LES Cracks en physique-chimie ( dar al ouma) 3 AC",
+"price": 130.00
+},
+{
+"name": "Collection Compétence Physique Chimie 2AC",
+"price": 38.00
+},
+{
+"name": "L'archipel de Physique série Sciences Mathématiques et Sciences Physiques 2 bac Moynier edition",
+"price": 210.00
+},
+{
+"name": "Univers plus Physique chimie 3.A.C",
+"price": 35.00
+},
+{
+"name": "Etincelle PC Manuel de l’élève TC scientifique & technologie",
+"price": 50.00
+},
+{
+"name": "AL Moufid en Physique Chimie 2eme AC",
+"price": 35.00
+},
+{
+"name": "AL Moufid en Physique Chimie 3eme AC",
+"price": 35.00
+},
+{
+"name": "Maxi Physique-Chimie 2 A.C",
+"price": 78.00
+},
+{
+"name": "Collection sigma SVT 1AC documents en couleurs",
+"price": 30.00
+},
+{
+"name": "Collection sigma SVT 2AC documents en couleurs",
+"price": 30.00
+},
+{
+"name": "Collection sigma SVT 3AC documents couleurs",
+"price": 30.00
+},
+{
+"name": "Etincelle SVT 1er A.C manuel d'élève",
+"price": 35.00
+},
+{
+"name": "Mon grand labo en SVT 1er AC",
+"price": 40.00
+},
+{
+"name": "Cahier de documents SVT Azzedine Alami 1AC",
+"price": 25.00
+},
+{
+"name": "فضاء النشاط العلمي للسنة الرابعة من التعليم الإبتدائي",
+"price": 11.00
+},
+{
+"name": "Etincelle SVT 3 A.C manuel d'élève",
+"price": 35.00
+},
+{
+"name": "Mon grand labo en SVT 3e AC",
+"price": 40.00
+},
+{
+"name": "L'univers de SVT 2 A.C",
+"price": 120.00
+},
+{
+"name": "Collection compétence SVT 3eme année collégiale",
+"price": 38.00
+},
+{
+"name": "Collection Compétence SVT manuel de l'élève 1 ére année collégiale",
+"price": 33.00
+},
+{
+"name": "Univers documents en couleurs SVT 2ème A.C",
+"price": 35.00
+},
+{
+"name": "Collection compétence SVT 2ème année collégiale",
+"price": 35.00
+},
+{
+"name": "Cahier d'activités svt en arabe",
+"price": 25.00
+},
+{
+"name": "Al Moufid en SVT 2 A.C",
+"price": 32.00
+},
+{
+"name": "Etincelle SVT 1bac Sc Ex Semestre 1 et 2",
+"price": 130.00
+},
+{
+"name": "L'archipel des science de la vie et de la terre Tronc Commun",
+"price": 115.50
+},
+{
+"name": "Les Cracks en sciences de la vie et de la terre 3 A.C",
+"price": 150.00
+},
+{
+"name": "Vivace SVT 1er AC",
+"price": 28.00
+},
+{
+"name": "Oxygène sciences de la vie et de la terre 2 A.C conforme au programme marocain",
+"price": 35.00
+},
+{
+"name": "Etincelle SVT 1er Bac S.m",
+"price": 99.00
+},
+{
+"name": "Al Moufid en SVT 1re A.C",
+"price": 28.00
+},
+{
+"name": "L'archipel sciences de la vie et de la terre 1.A.C",
+"price": 115.50
+},
+{
+"name": "ATLAS SVT 2er AC",
+"price": 32.00
+},
+{
+"name": "L'Archipel des sciences des la vie et de la terre 1ère Bac SC.M/SC.EX",
+"price": 136.50
+},
+{
+"name": "Univers documents en couleurs SVT 3ème A.C",
+"price": 30.00
+},
+{
+"name": "L'archipel des svt 2 AC",
+"price": 115.50
+},
+{
+"name": "Oxygene SVT 1E A.C",
+"price": 30.00
+},
+{
+"name": "Al moufid en SVT 3e AC",
+"price": 32.00
+},
+{
+"name": "Collection CDPL 1ère AC SVT",
+"price": 156.00
+},
+{
+"name": "Les cracks en SVT 2AC",
+"price": 150.00
+},
+{
+"name": "L'archipel des sciences et de la vie et de terre 3 A.C éd 2021",
+"price": 136.50
+},
+{
+"name": "Collection APEF collége SVT 2ème A.C",
+"price": 199.00
+},
+{
+"name": "سيڭما علوم الحيا ة والارض وثائق بالأوان السنة الثانية إعدادي",
+"price": 18.00
+},
+{
+"name": "Etincelle SVT 1 Bac Sc ex",
+"price": 75.00
+},
+{
+"name": "Manuel Oxygène SVT 1er A.C",
+"price": 35.00
+},
+{
+"name": "Collection APEF collège SVT 3 A.C",
+"price": 199.00
+},
+{
+"name": "L'archipel des SVT 2ème année du baccaluréat Sc.Mathématiques -A",
+"price": 160.00
+},
+{
+"name": "Collection CDPL 2ème AC SVT",
+"price": 156.00
+},
+{
+"name": "Oxygène 3e AC SVT",
+"price": 35.00
+},
+{
+"name": "Collection CDPL SVT 3ème AC",
+"price": 156.00
+},
+{
+"name": "Etincelle maths 2 bac Sc. ex Sc technique",
+"price": 90.00
+},
+{
+"name": "Manuel Oxygène Maths 1er A.C",
+"price": 49.00
+},
+{
+"name": "Manuel Oxygène Maths 3e A.C",
+"price": 49.00
+},
+{
+"name": "TOP Mathématiques 6AP",
+"price": 199.00
+},
+{
+"name": "TOP Mathématiques CE1",
+"price": 199.00
+},
+{
+"name": "TOP Mathématiques CP",
+"price": 199.00
+},
+{
+"name": "Mathématiques Tronc Commun CDPL Prog Marocain - Option Français",
+"price": 220.00
+},
+{
+"name": "Panorama Math 3 AC MANUEL DEL'élève",
+"price": 48.00
+},
+{
+"name": "Les Maths avec Léonie CE2",
+"price": 172.00
+},
+{
+"name": "Super maths CM2",
+"price": 125.00
+},
+{
+"name": "Maxi maths 2ème bac S.exp",
+"price": 160.00
+},
+{
+"name": "L'oasis des Maths 1.Bac Sciences Mathématiques",
+"price": 70.00
+},
+{
+"name": "L'oasis des maths 2ème bac Moynier edition",
+"price": 110.00
+},
+{
+"name": "Vivre les math CM2",
+"price": 154.50
+},
+{
+"name": "POUR COMPRENDRE LES MATHS CE2 - Adapté au programme Marocain",
+"price": 135.00
+},
+{
+"name": "Mathémathiques 2AC C.D.P.L",
+"price": 149.50
+},
+{
+"name": "Je progresse en Maths CE1",
+"price": 65.00
+},
+{
+"name": "Pack Cap maths CP fichier d'entrainement+cahier de géométrie",
+"price": 170.00
+},
+{
+"name": "Micro-maths-CP",
+"price": 85.00
+},
+{
+"name": "Etincelle MATHS Manuel de l’élève TC scientifique & technologie",
+"price": 50.00
+},
+{
+"name": "Univers plus Maths 3e A.C",
+"price": 40.00
+},
+{
+"name": "Manuel Oxygène Maths 2e A.C",
+"price": 49.00
+},
+{
+"name": "Le Monde Des Maths CM2",
+"price": 69.00
+},
+{
+"name": "TOP Mathématiques CE2",
+"price": 197.00
+},
+{
+"name": "في رحاب الرياضيات - السنة الاولى من سلك البكالوريا - مسالك العلوم",
+"price": 54.00
+},
+{
+"name": "JE PROGRESSE EN MATHS CE2",
+"price": 65.00
+},
+{
+"name": "Le nouvel A portée de maths CM1 Manuel + cahier d'activités",
+"price": 278.00
+},
+{
+"name": "Accro Maths CE1",
+"price": 47.50
+},
+{
+"name": "Accro Maths CM1",
+"price": 47.50
+},
+{
+"name": "Accro Maths CP",
+"price": 47.50
+},
+{
+"name": "Univers plus Maths 2e A.C",
+"price": 40.00
+},
+{
+"name": "Pour comprendre les mathématiques CE2 - Fichier élève",
+"price": 166.00
+},
+{
+"name": "Calculator maths CP",
+"price": 95.00
+},
+{
+"name": "MATHS 1ère Année collégiale - Collection Compétence",
+"price": 41.50
+},
+{
+"name": "Super maths CE2",
+"price": 115.00
+},
+{
+"name": "Super maths CE1",
+"price": 110.00
+},
+{
+"name": "Les cracks en Mathématiques 1 A C",
+"price": 150.00
+},
+{
+"name": "Cahier de maths collection dimensions",
+"price": 78.00
+},
+{
+"name": "Mathèmathique la réussite CE6",
+"price": 70.00
+},
+{
+"name": "Etincelle Maths 3e A.C",
+"price": 40.00
+},
+{
+"name": "Mathématiques Calculator CM1",
+"price": 75.00
+},
+{
+"name": "Mathémathiques la Réussite 5",
+"price": 65.00
+},
+{
+"name": "Calculator Mathématiques 6",
+"price": 95.00
+},
+{
+"name": "MATHS 3ème Année collégiale - Collection Compétence",
+"price": 42.50
+},
+{
+"name": "Maxi Math le manuel 1ère Bac S-EX",
+"price": 145.00
+},
+{
+"name": "AL Moufid en mathématique 2eme Bac Sc math Tome 1",
+"price": 120.00
+},
+{
+"name": "Etincelle maths 1 bac Sc. ex Sc technique",
+"price": 75.00
+},
+{
+"name": "Accro math CM2",
+"price": 45.00
+},
+{
+"name": "Mathématiques collection APEF adapte au programe marocain 3 . A.C",
+"price": 199.00
+},
+{
+"name": "Outils Pour les Maths CE1",
+"price": 154.50
+},
+{
+"name": "AL Moufid en Mathématique TC",
+"price": 90.00
+},
+{
+"name": "JE Progresse en math CM1",
+"price": 75.00
+},
+{
+"name": "La Réussite Mathématiques 4AP Fichier de l'élève",
+"price": 65.00
+},
+{
+"name": "TOP Mathématiques CM2",
+"price": 199.00
+},
+{
+"name": "Vivre les math CE2",
+"price": 158.00
+},
+{
+"name": "LE P'tit matheux CM1",
+"price": 98.00
+},
+{
+"name": "Mon grand labo en Maths 1er AC",
+"price": 40.00
+},
+{
+"name": "Pour comprendre les maths CE2 Programme 2020",
+"price": 221.00
+},
+{
+"name": "Etincelle maths 1 AC 2020 Conforme au Programme Scolaire Marocain (éditions APOSTROPHE)",
+"price": 40.00
+},
+{
+"name": "Micro matsh CE1",
+"price": 100.00
+},
+{
+"name": "Mon grand labo en Maths 2e AC",
+"price": 40.00
+},
+{
+"name": "Pour comprendre les mathématiques CM1 éd 2016",
+"price": 228.00
+},
+{
+"name": "L'archipel des Maths 1ere année collège conforme au programme marocain",
+"price": 136.50
+},
+{
+"name": "Micro maths CE2",
+"price": 100.00
+},
+{
+"name": "Micro Math CM1",
+"price": 100.00
+},
+{
+"name": "le p'tit matheux CM2",
+"price": 98.00
+},
+{
+"name": "Maxi maths le manuel 2 éme année du cycle secondaire collégial 2AC",
+"price": 48.00
+},
+{
+"name": "Mathématiques collection APEF Collège 2 A.C",
+"price": 199.00
+},
+{
+"name": "Maxi Maths 3 A. C",
+"price": 40.00
+},
+{
+"name": "Micro Math CE6",
+"price": 100.00
+},
+{
+"name": "Mon grand labo en Maths 3e AC",
+"price": 40.00
+},
+{
+"name": "المرجع في الرياضيات السنة الثانية ابتدائي",
+"price": 13.50
+},
+{
+"name": "AL Moufid em mathematique 1er Bac Sc math Analyse TOME 2",
+"price": 95.00
+},
+{
+"name": "Pour comprendre les mathématique cm2 éd 2017",
+"price": 228.00
+},
+{
+"name": "Les Cracks en Mathématiques 3ème AC",
+"price": 150.00
+},
+{
+"name": "Etincelle Maths 2AC programme marocain",
+"price": 40.00
+},
+{
+"name": "Micro Math CM2",
+"price": 100.00
+},
+{
+"name": "فضاء الرياضيات 3 ابتدائي",
+"price": 14.00
+},
+{
+"name": "Je progresse en Sciences et technologies CE1",
+"price": 75.00
+},
+{
+"name": "الجيد في الرياضيات السنة السادسة ابتدائي",
+"price": 14.50
+},
+{
+"name": "Pour comprendre les mathématiques CM1 adapté au programme marocain. nouvelle edition CM1",
+"price": 148.00
+},
+{
+"name": "الجيد في الرياضيات . الطبعة الجديدة المستوى التاني ابتدائي",
+"price": 13.50
+},
+{
+"name": "النجاح في الرياضيات السنة الخامسة ابتدائي طبعة جديدة و منقحة",
+"price": 15.00
+},
+{
+"name": "فضاء الرياضيات السنة الثانية من التعليم الإبتدائي مطبعة المعارف الجديدة",
+"price": 13.50
+},
+{
+"name": "Pour comprendre les maths CE2 Mémo ISBN : 978-2-01-6247-3",
+"price": 186.00
+},
+{
+"name": "Archipel math CP (édition adapté au programme Marocain)",
+"price": 79.00
+},
+{
+"name": "Pour comprendre les mathématiques CM2",
+"price": 189.00
+},
+{
+"name": "الجيد في الرياضيات للسنة الرابعة من التعليم الابتدائي",
+"price": 13.00
+},
+{
+"name": "Archipel Maths édition adapté au programme marocain CE1",
+"price": 79.00
+},
+{
+"name": "Minibus 5/6 ans mon fichier de mathématiques et de découverte du monde GS + Minibus 5/6 Mon cahier de graphisme",
+"price": 149.00
+},
+{
+"name": "Archipel maths 3eme année ( edition moynier) CE2",
+"price": 79.00
+},
+{
+"name": "les cahiers Istra Questionner le monde CP",
+"price": 78.00
+},
+{
+"name": "Archipel maths 4 éme année de l'enseignement primaire nouvelle édition adapte au marocain CM1",
+"price": 79.00
+},
+{
+"name": "المفيد في الرياضيتت السنة الأولى ابتدائي",
+"price": 11.00
+},
+{
+"name": "Al moufid en maths 1er AC",
+"price": 49.00
+},
+{
+"name": "LE P'tit matheux CE1",
+"price": 98.00
+},
+{
+"name": "Pour comprendre les maths ce1 fichiers eleve 1 et 2 + memo + pages matériel éd 2023",
+"price": 174.00
+},
+{
+"name": "Pour comprendre les maths CE1 Mémo version français ISBN / 978-2-01-627233-6",
+"price": 173.00
+},
+{
+"name": "المفيد في الرياضيات السنة الرابعة ابتدائي",
+"price": 13.00
+},
+{
+"name": "Archipel Maths CM2",
+"price": 79.00
+},
+{
+"name": "Pour comprendre les maths CP + Mémo",
+"price": 165.00
+},
+{
+"name": "Archipel Maths 6AP fichier élève",
+"price": 79.00
+},
+{
+"name": "Maths la méthode de singapour CE1 Fichier 1 + Fichier 2",
+"price": 185.00
+},
+{
+"name": "في رحاب التربية الاسلامية السنة الثانية ابتدائي",
+"price": 11.00
+},
+{
+"name": "المنير في التربية الاسلامية السنة الثالثة ابتدائي",
+"price": 10.00
+},
+{
+"name": "المفيد في التربية الإسلامية السنة الرابعة ابتدائي",
+"price": 11.00
+},
+{
+"name": "في رحاب التربية الإسلامية (طبعة جديدة ومنقحة )السنة السادسة من التعليم الإبتدائي",
+"price": 11.50
+},
+{
+"name": "في رحاب التربية الاسلامية جدع مشترك",
+"price": 22.00
+},
+{
+"name": "احياء التربية الاسلامية السنة التانية اعدادي طبعة الجديدة",
+"price": 14.00
+},
+{
+"name": "النجاح في التربية الإسلامية السنة الثالثة من التعليم الإبتدائي",
+"price": 10.00
+},
+{
+"name": "فضاء التربية الاسلامية السنة الاولى اعدادي",
+"price": 15.50
+},
+{
+"name": "المنير في التربية الاسلامية 2 اعدادي",
+"price": 14.00
+},
+{
+"name": "الممتاز في التربية الإسلامية السنة الخامسة ابتدائي",
+"price": 10.00
+},
+{
+"name": "المنير في التربية الاسلامية السنة السادسة من التعليم الابتدائي",
+"price": 11.50
+},
+{
+"name": "في رحاب التربية الاسلامية السنة الثالثة اعدادي",
+"price": 15.50
+},
+{
+"name": "الممتاز في التربية الاسلامية السنة الثانية من التعليم الإبتدائي",
+"price": 11.00
+},
+{
+"name": "في رحاب التربية الاسلامية السنة الأولى من التعليم الثانوي الاعدادي",
+"price": 15.50
+},
+{
+"name": "المنير في التربية الاسلامية السنة الرابعة ابتدائي",
+"price": 11.00
+},
+{
+"name": "الممتاز في التربية الاسلامية السنة الاولى ابتدائي",
+"price": 16.00
+},
+{
+"name": "المفيد في التربية الإسلامية السنة السادسة من التعليم الإبتدائي",
+"price": 11.50
+},
+{
+"name": "المفيد في التربية الإسلامية - كتاب التلميذ والتلميذة - السنة الاولى من التعليم الابتدائي",
+"price": 16.00
+},
+{
+"name": "منار التربية الاسلامية السنة الثالثة من التعليم الثانوي الإعدادي",
+"price": 15.50
+},
+{
+"name": "منار التربية الاسلامية السنة الثانية باكلوريا",
+"price": 32.00
+},
+{
+"name": "Plan Comptable général Marocain",
+"price": 30.00
+},
+{
+"name": "Evoluer en informatique au primaire Niveau 2",
+"price": 65.00
+},
+{
+"name": "Evoluer en informatique au primaire Niveau 3",
+"price": 77.00
+},
+{
+"name": "Evoluer en informatique au primaire Niveau 4",
+"price": 50.00
+},
+{
+"name": "Evoluer en informatique au primaire Niveau 5",
+"price": 50.00
+},
+{
+"name": "Evoluer informatique au primaire Niveau 6",
+"price": 50.00
+},
+{
+"name": "Pixel Informatique 2",
+"price": 82.00
+},
+{
+"name": "Informatique et Robotique au primaire 6",
+"price": 77.00
+},
+{
+"name": "Informatique et Robotique au primaire 4",
+"price": 77.00
+},
+{
+"name": "Informatique et Robotique au primaire 5",
+"price": 77.00
+},
+{
+"name": "Pixel informatique 1",
+"price": 82.00
+},
+{
+"name": "Informatique et Robotique au primaire 2",
+"price": 70.00
+},
+{
+"name": "Pixel Informatique 5",
+"price": 82.00
+},
+{
+"name": "Pixel Informatique 3",
+"price": 82.00
+},
+{
+"name": "Pixel Informatique 4",
+"price": 82.00
+},
+{
+"name": "Informatique et Robotique au primaire 3",
+"price": 77.00
+},
+{
+"name": "Informatique et Robotique au primaire 1",
+"price": 70.00
+},
+{
+"name": "Pixel informatique 6",
+"price": 82.00
+},
+{
+"name": "informatique et Robotique au Collège 2",
+"price": 90.00
+},
+{
+"name": "Pixel informatique 1ére AC",
+"price": 96.00
+},
+{
+"name": "Pixel informatique 2e AC",
+"price": 96.00
+},
+{
+"name": "Pixel informatique 3e AC",
+"price": 96.00
+},
+{
+"name": "informatique et Robotique au Collège 3",
+"price": 90.00
+},
+{
+"name": "Evoluer en informatique aux Troncs Communs",
+"price": 90.00
+},
+{
+"name": "Evoluer en Informatique au collège 1",
+"price": 65.00
+},
+{
+"name": "Horizon informatique cycle secondaire collégial 2",
+"price": 65.00
+},
+{
+"name": "Evoluer en Informatique au collège 2",
+"price": 65.00
+},
+{
+"name": "Horizon informatique cycle secondaire collégial 3",
+"price": 65.00
+},
+{
+"name": "Evoluer en informatique au collège 3",
+"price": 65.00
+},
+{
+"name": "Evoluer en informatique au primaire Niveau 1",
+"price": 65.00
+},
+{
+"name": "الجديد في الاجتماعيات السنة الرابعة من التعليم الابتدائي",
+"price": 12.00
+},
+{
+"name": "الجديد في الاجتماعيات السنة السادسة ابتدائي",
+"price": 18.50
+},
+{
+"name": "في رحاب الاجتماعيات السنة الأولى من التعليم الثانوي الاعدادي طبعة جديدة",
+"price": 21.50
+},
+{
+"name": "منار الاجتماعيات السنة الثانية اعدادي",
+"price": 21.50
+},
+{
+"name": "المفيد في الاجتماعيات السنة الخامسة ابتدائي",
+"price": 17.00
+},
+{
+"name": "النجاح في الاجتماعيات السنة الثانية من التعليم الثانوي الإعدادي",
+"price": 21.50
+},
+{
+"name": "منار التاريخ والجغرافيا 1باك",
+"price": 40.00
+},
+{
+"name": "التجديد في الاجتماعيات . طبعة الجديدة والمنقحة للسنة الثالثة ثانوي اعدادي",
+"price": 24.50
+},
+{
+"name": "فضاء الاجتماعيات السنة الأولى اعدادي",
+"price": 21.50
+},
+{
+"name": "في رحاب الاجتماعيات 4",
+"price": 12.00
+},
+{
+"name": "سلسلة سيكما في التاريخ و الجغرافيا 1اعدادي",
+"price": 30.00
+},
+{
+"name": "مسار الاجتماعيات السنة السادسة ابتدائي",
+"price": 18.50
+},
+{
+"name": "سيكما في التاريخ و الجغرافيا دفتر الوتائق بالالوان2 اعدادي",
+"price": 30.00
+},
+{
+"name": "النجاح في الاجتماعيات السنة السادسة ابتدائي طبعة شتنبر 2020",
+"price": 18.50
+},
+{
+"name": "سلسلة سيكما في التاريخ و الجغرافيا 3",
+"price": 30.00
+},
+{
+"name": "Histoire géographie EMC 3e Manuel de l'élève Réf : 9782377609192",
+"price": 390.00
+},
+{
+"name": "المختار في التربية التشكيلية 2",
+"price": 10.50
+},
+{
+"name": "التربية التشكيلية كراسة التلميد السنة الأولى الإبتدائية",
+"price": 9.00
+},
+{
+"name": "الأساسي في التربية الفنية السنة الثالثة ابتدائي",
+"price": 10.50
+},
+{
+"name": "عالم التربية التشكيلية السنة الأولى من التعليم البتدائي",
+"price": 9.00
+},
+{
+"name": "المفيد في التربية التشكيلية للسنة الرابعة من التعليم الابتدائي",
+"price": 10.50
+},
+{
+"name": "الجديد في التربية التشكيلية المستوى الخامس ابتدائي طبعة جديدة",
+"price": 15.50
+},
+{
+"name": "المعتمد في التربية الفنية السنة السادسة من التعليم الابتدائي",
+"price": 16.00
+},
+{
+"name": "المفيد في التربية الفنية السنة الثالتة من التعليم الابتدائي 3",
+"price": 10.50
+},
+{
+"name": "المنير في التربية التشكيلية السنة السادسة ابتدائي",
+"price": 16.00
+},
+{
+"name": "الممتاز في التربية التشكيلية السنة السادسة ابتدائي",
+"price": 16.00
+},
+{
+"name": "الموجه في التربية التشكيلية الثانية اعدادي",
+"price": 24.00
+},
+{
+"name": "الاساسي في التربية التشكيلية المستوى السادس",
+"price": 16.00
+},
+{
+"name": "المنير في التربية التشكيلية السنة الخامسة الابتدائية",
+"price": 15.50
+},
+{
+"name": "الموجه في التربية التشكيلية الثالثة اعدادي",
+"price": 32.00
+},
+{
+"name": "Stylo a bille marron inkplus SMART",
+"price": 2.50
+},
+{
+"name": "Surligneur métallique Rouge FABER CASTELL Réf : 546733",
+"price": 13.00
+},
+{
+"name": "Recharge stylo PILOT G-2 BLEU",
+"price": 12.00
+},
+{
+"name": "Stylo à bille Orange LINKER Réf : 2989",
+"price": 2.00
+},
+{
+"name": "Feutre extra fin graph Peps Vert Amazone MAPED Réf : 749125",
+"price": 8.00
+},
+{
+"name": "Marqueur permanent 100 Rond Vert PILOT Réf : SCA-100-G",
+"price": 8.00
+},
+{
+"name": "Fluorescent Textliner 48 Rouge FABER CASTEL Réf : 154821",
+"price": 10.00
+},
+{
+"name": "Marqueur tableau effaçable Vert REYNOLDS Réf : 60295",
+"price": 5.00
+},
+{
+"name": "Stylo à bille 048 Rouge REYNOLDS Réf : 048003",
+"price": 2.00
+},
+{
+"name": "Marqueur permanent multimark S Vert FABER CASTELL Réf : 152363",
+"price": 15.00
+},
+{
+"name": "Correcteur ruban mini Pocket mouse TIPP-EX",
+"price": 20.00
+},
+{
+"name": "Ruban correcteur 10m",
+"price": 12.00
+},
+{
+"name": "Feutre extra fin graph'peps Marron foncé Réf : 749112",
+"price": 8.00
+},
+{
+"name": "Recharge marqueur tableau Bleu Faber CASTELL Réf : 254351",
+"price": 6.00
+},
+{
+"name": "Surligneur métallique Violet FABER CASTELL Réf : 546788",
+"price": 13.00
+},
+{
+"name": "Stylo feutre pen 68 1mm Noir STABILO Réf : 68/46",
+"price": 8.50
+},
+{
+"name": "Marqueur permanent multimark F Vert FABER CASTELL Réf : 151363",
+"price": 15.00
+},
+{
+"name": "Marqueur permanent multimark M Vert FABER CASTELL Réf : 525639",
+"price": 15.00
+},
+{
+"name": "Recharge Marqueur Noir M.OFFICE Réf : G-206T",
+"price": 4.00
+},
+{
+"name": "Pochette de 4 Surligneurs 46 métallique FABER CASTELL Réf : 154624",
+"price": 40.00
+},
+{
+"name": "Surligneur métallique Bleu FABER CASTELL Réf : 546474",
+"price": 13.00
+},
+{
+"name": "Marqueur permanent super color Noir PILOT",
+"price": 15.00
+},
+{
+"name": "Stylo feutre pen 68 1mm Pourpre STABILO Réf : 68/19",
+"price": 8.50
+},
+{
+"name": "Stylo feutre pen 68 1mm Bleu Outremer STABILO Réf : 68/32",
+"price": 8.50
+},
+{
+"name": "Stylo à bille Bleu Ciel ACCORD",
+"price": 2.50
+},
+{
+"name": "Blanco Stylo Correcteur 7 ml CIVORS Réf: 118",
+"price": 6.00
+},
+{
+"name": "Stylo super grip medium tip Vert PILOT Réf : 10R-M-G",
+"price": 15.00
+},
+{
+"name": "Stylo tri-mate orange Bleu CELLO Réf : 3278",
+"price": 3.00
+},
+{
+"name": "Surligneur Vert STABILO NEON Réf: -72/33",
+"price": 9.00
+},
+{
+"name": "Marqueur permanent multimark M Rouge FABER CASTELL Réf : 525219",
+"price": 15.00
+},
+{
+"name": "Fluorescent Textliner 38 Bleu FABER CASTEL",
+"price": 10.00
+},
+{
+"name": "Crayon graphite 2H STAEDTLER",
+"price": 7.00
+},
+{
+"name": "Stylo frixion ball 0.7 Noir PILOT Réf : 322709",
+"price": 17.50
+},
+{
+"name": "Marqueur tableau effaçable Rouge REYNOLDS Réf : 60294",
+"price": 5.00
+},
+{
+"name": "Stylo à bille ice Vert MAPED Réf :224433",
+"price": 2.00
+},
+{
+"name": "Stylo super grip medium tip Rouge PILOT Réf : 10R-M-R",
+"price": 15.00
+},
+{
+"name": "Stylo Dore Fantaisie YANG-YANG",
+"price": 15.00
+},
+{
+"name": "Surligneur Rose STABILO NEON Réf: -72/56",
+"price": 9.00
+},
+{
+"name": "Surligneur Violet STABILO NEON",
+"price": 9.00
+},
+{
+"name": "Effaceur pointe bisoutée M FABER CASTELL",
+"price": 10.50
+},
+{
+"name": "Stylo à plume Bleu+ cartouche FABER CASTELL",
+"price": 60.00
+},
+{
+"name": "Crayon HB2 avec gomme MAPED",
+"price": 3.00
+},
+{
+"name": "Stylo feutre pen 68 1mm Rouge STABILO Réf : 68/48",
+"price": 8.50
+},
+{
+"name": "Recharge Porte Mines 0.5 mm FABER CASTELL",
+"price": 9.00
+},
+{
+"name": "Stylo feutre Abricot point 88 fine 0.4 STABILO Réf: 88/26",
+"price": 8.50
+},
+{
+"name": "Stylo à encre liquide V7 hi-tecpoint 0.7 Rouge PILOT Réf : 085772",
+"price": 20.50
+},
+{
+"name": "Stylo feutre d'écriture fine 0.4 Noir FABER CASTELL Réf : 516996",
+"price": 10.00
+},
+{
+"name": "Surligneur métallique Vert FABER CASTELL Réf : 546399",
+"price": 13.00
+},
+{
+"name": "Stylo a bille BP100M Noir ATLAS Réf : 11725",
+"price": 2.00
+},
+{
+"name": "Stylo à bille Marron LINKER Réf : 2985",
+"price": 2.00
+},
+{
+"name": "Stylo 4 couleurs Mini bleu BIC",
+"price": 10.00
+},
+{
+"name": "Marqueur permanent multimark S Rouge FABER CASTELL Réf : 152321",
+"price": 15.00
+},
+{
+"name": "Fluorescent Textliner 38 rose FABER CASTEL",
+"price": 10.00
+},
+{
+"name": "Marqueur permanent 100 Rond Rouge PILOT Réf : SCA-100-R",
+"price": 8.00
+},
+{
+"name": "Marqueur tableau slim Vert FABER CASTEL Réf : 156063",
+"price": 8.00
+},
+{
+"name": "Marqueur tableau effaçable Vert DELI Réf : E6820",
+"price": 8.00
+},
+{
+"name": "Stylo feutre Mauve point 88 fine 0,4 STABILO Réf : 88/55",
+"price": 8.50
+},
+{
+"name": "Stylo à encre gel-ocity fine 0.5mm Rouge BIC",
+"price": 6.00
+},
+{
+"name": "stylo smart inkplus 0.7mm bleu fine",
+"price": 2.50
+},
+{
+"name": "Marqueur permanent rond P20 Rouge FABER CASTELL Réf : 254121",
+"price": 8.50
+},
+{
+"name": "Stylo effaçable frixion ball clicker 0,7 Violet PILOT Réf : 417535",
+"price": 16.00
+},
+{
+"name": "Marqueur tableau effaçable Bleu DELI Réf : E6820",
+"price": 8.00
+},
+{
+"name": "Stylo effaçable frixion ball clicker 0,7 Rose PILOT Réf : 417559",
+"price": 16.00
+},
+{
+"name": "Effaceur pointe F FABER CASTELL",
+"price": 10.50
+},
+{
+"name": "Stylo à bille à encre gel G-2 0,7 Violet PILOT",
+"price": 12.00
+},
+{
+"name": "Stylo feutre Lilas clair point 88 FINE 0,4 STABILO Réf : 88/59",
+"price": 8.50
+},
+{
+"name": "Stylo à bille à encre gel G-2 0.7 Bordeaux PILOT Réf : 275845",
+"price": 12.00
+},
+{
+"name": "Marqueur tableau Noir effaçable M.OFFICE",
+"price": 6.00
+},
+{
+"name": "Stylo à bille Tri Flow 1mm Marron FABER CASTELL Réf : 546676",
+"price": 3.00
+},
+{
+"name": "Stylo à encre liquide V5 hi-tecpoint 0.5 bleu PILOT Réf: 085703",
+"price": 20.00
+},
+{
+"name": "Surligneur Orange STABILO NEON Réf: -72/54",
+"price": 9.00
+},
+{
+"name": "Stylo à bille TOPS 505 cristal Rouge SCHNEIDER Réf : 150602",
+"price": 2.00
+},
+{
+"name": "Stylo à bille pointe 1.0mm Rouge KRISH TRI-3",
+"price": 2.50
+},
+{
+"name": "Stylo à encre liquide V5 hi-tecpoint 0.5 Violet PILOT Réf : 085741",
+"price": 20.00
+},
+{
+"name": "Marqueur tableau bleu effaçable M.OFFICE",
+"price": 6.00
+},
+{
+"name": "Porte Stylo Métal en Différente Couleur",
+"price": 18.00
+},
+{
+"name": "Paquet de 50 stylos cristal original Bleu BIC Réf : 29627",
+"price": 70.00
+},
+{
+"name": "Marqueur permanent STAEDTLER Noir Réf : 352-9",
+"price": 12.00
+},
+{
+"name": "Stylo à bille ice Noir MAPED Réf : 224431",
+"price": 2.00
+},
+{
+"name": "Crayon graphite 8B STAEDTLER",
+"price": 7.00
+},
+{
+"name": "Marqueur tableau effaçable Noir DELI Réf : E6820",
+"price": 8.00
+},
+{
+"name": "Marqueur permanent multimark S Bleu FABER CASTELL Réf : 152351",
+"price": 15.00
+},
+{
+"name": "Gomme PVC-Free PM FABER CASTELL Réf : 189530",
+"price": 3.00
+},
+{
+"name": "Crayon graphite 3B STAEDTLER",
+"price": 7.00
+},
+{
+"name": "Pochette de 4 surligneurs 46 FABER CASTELL Réf : 154604",
+"price": 42.00
+},
+{
+"name": "Marqueur tableau effaçable Rouge DELI Réf : E6820",
+"price": 8.00
+},
+{
+"name": "Marqueur permanent multimark M Bleu FABER CASTELL Réf : 525516",
+"price": 15.00
+},
+{
+"name": "Fluorescent Textliner 38 orange FABER CASTEL",
+"price": 10.00
+},
+{
+"name": "Crayon graphite 2B STAEDTLER",
+"price": 7.00
+},
+{
+"name": "Gomme Smile MASHMALOW",
+"price": 10.00
+},
+{
+"name": "Stylo à encre liquide V5 hi-tecpoint 0.5 Rouge PILOT Réf : 5085697",
+"price": 20.50
+},
+{
+"name": "Stylo feutre Rose point 88 fine 0.4 STABILO Réf : 88/56",
+"price": 8.50
+},
+{
+"name": "Marqueur permanent plat 2300 Rouge BIC",
+"price": 8.00
+},
+{
+"name": "Stylo à bille à encre gel G-2 0.7 Rose PILOT Réf : 275821",
+"price": 12.00
+},
+{
+"name": "Marqueur permanent multimark F Rouge FABER CASTELL Réf : 513216",
+"price": 15.00
+},
+{
+"name": "Surligneur métallique Brillant Ruby FABER CASTELL Réf : 154691",
+"price": 13.00
+},
+{
+"name": "Pochette de 18 feutres Visa 880 pointe fine couleurs assorties",
+"price": 35.00
+},
+{
+"name": "Marqueur permanent rond P20 Bleu FABER CASTELL Réf : 254151",
+"price": 8.50
+},
+{
+"name": "Marqueur permanent 400 Plat Rouge PILOT Réf : SCA-400-R",
+"price": 8.00
+},
+{
+"name": "Crayon graphite HB STAEDTLER",
+"price": 7.00
+},
+{
+"name": "Surligneur Vert BIC Réf: 943647",
+"price": 10.00
+},
+{
+"name": "Stylo à encre liquide V5 hi-tecpoint 0.5 Bleu Ciel PILOT Réf : 085727",
+"price": 20.00
+},
+{
+"name": "Surligneur métallique Gris FABER CASTELL Réf : 546610",
+"price": 13.00
+},
+{
+"name": "Surligneur métallique Marron FABER CASTELL Réf : 546269",
+"price": 13.00
+},
+{
+"name": "Marqueur permanent multimark S Noir FABER CASTELL Réf : 152399",
+"price": 15.00
+},
+{
+"name": "Stylo PILOT BP-1 RT pointe moyenne Bleu",
+"price": 8.00
+},
+{
+"name": "Pochette de 4 Surligneurs 48 FABER CASTELL Réf : 154804",
+"price": 42.00
+},
+{
+"name": "Surligneur Orange BIC Réf : 454323",
+"price": 10.00
+},
+{
+"name": "Stylo à bille pointe 1.0mm Vert KRISH TRI-3",
+"price": 2.50
+},
+{
+"name": "Stylo a bille P1 touch Noir MILAN Réf : 1765",
+"price": 7.00
+},
+{
+"name": "Cartouche D'encre Noir SCHNEIDER Réf : 6601",
+"price": 7.00
+},
+{
+"name": "Stylo PILOT BP-1 RT pointe moyenne Noir",
+"price": 8.00
+},
+{
+"name": "Stylo effaçable frixion ball clicker 0,7 Rouge PILOT Réf : 417504",
+"price": 16.00
+},
+{
+"name": "Feutre de 12 BIC Visacolor Jumbo",
+"price": 60.00
+},
+{
+"name": "Feutre velleda Rouge BIC Réf : 172109",
+"price": 11.00
+},
+{
+"name": "Stylo 4 couleurs BIC Pastel",
+"price": 15.00
+},
+{
+"name": "Stylo à Bille Click 0.7 mm PENTONIC Multi-Couleurs B-RT",
+"price": 5.00
+},
+{
+"name": "Stylo feutre Vert pin point 88 fine 0,4 STABILO Réf : 88/63",
+"price": 8.50
+},
+{
+"name": "Stylo feutre Vert point 88 fine 0,4 STABILO Réf : 88/53",
+"price": 8.50
+},
+{
+"name": "Stylo 4 Couleurs Assorties FUN BIC",
+"price": 16.00
+},
+{
+"name": "Marqueur tableau slim Noir FABER CASTEL Réf : 156099",
+"price": 8.00
+},
+{
+"name": "Stylo à bille Tri Flow 1mm Noir FABER CASTELL Réf : 143399",
+"price": 3.00
+},
+{
+"name": "Stylo à bille Tri Flow 1mm Vert FABER CASTELL Réf : 143363",
+"price": 3.00
+},
+{
+"name": "Marqueur tableau slim Bleu FABER CASTEL Réf : 156051",
+"price": 8.00
+},
+{
+"name": "Stylo cristal soft Noir BIC Réf : 72101B",
+"price": 2.00
+},
+{
+"name": "Stylo effaçable frixion ball clicker 0,7 Noir PILOT Réf : 417498",
+"price": 16.00
+},
+{
+"name": "Stylo cristal soft Vert BIC Réf : 920988",
+"price": 2.00
+},
+{
+"name": "Stylo cristal up Vert fluo BIC",
+"price": 2.50
+},
+{
+"name": "Paquet de 4 feutres Velleda en couleur +1 BIC",
+"price": 33.00
+},
+{
+"name": "Marqueur tableau effaçable ronde Bleu BIC",
+"price": 10.00
+},
+{
+"name": "Stylo feutre Noir point 88 fine 0,4 STABILO Réf : 88/46",
+"price": 8.50
+},
+{
+"name": "Fluorescent Rose STABILO BOSS Réf : 70/58",
+"price": 12.00
+},
+{
+"name": "Surligneur classic Orange MAPED Réf : 742535",
+"price": 8.50
+},
+{
+"name": "Marqueur tableau effaçable ronde Vert BIC",
+"price": 10.00
+},
+{
+"name": "Marqueur permanent 400 Plat Bleu PILOT Réf : SCA-400-L",
+"price": 8.00
+},
+{
+"name": "Blanco souris UHU Réf : 63477",
+"price": 20.00
+},
+{
+"name": "Gomme Scribe DELI",
+"price": 3.00
+},
+{
+"name": "Fluorescent textliner 46 Orange FABER CASTEL Réf : 154615",
+"price": 10.00
+},
+{
+"name": "Marqueur tableau effaçable maxiflo Vert PENTEL Réf : MWL5M-DA",
+"price": 24.00
+},
+{
+"name": "Stylo à bille Focus Noir LUXOR Réf : 45549",
+"price": 2.50
+},
+{
+"name": "Stylo à encre liquide V7 hi-tecpoint 0.7 Noir PILOT Réf : 085758",
+"price": 18.50
+},
+{
+"name": "Stylo à bille TOPS 505 cristal Vert SCHNEIDER Réf : 150604",
+"price": 2.00
+},
+{
+"name": "Fluorescent textliner 46 Vert FABER CASTELL Réf : 154663",
+"price": 10.00
+},
+{
+"name": "Stylo effaçable frixion ball clicker 0,7 Bleu PILOT Réf : 417511",
+"price": 16.00
+},
+{
+"name": "Gomme PVC-Free FABER CASTELL Réf : 189520",
+"price": 5.50
+},
+{
+"name": "Crayon évolution original HB BIC Réf : 03434",
+"price": 3.50
+},
+{
+"name": "Stylo a bille Bleu ciel inkplus SMART",
+"price": 2.50
+},
+{
+"name": "Gomme Mini Technic 300 MAPED",
+"price": 3.00
+},
+{
+"name": "Stylo cristal orange fine Noir BIC Réf : 03847",
+"price": 2.00
+},
+{
+"name": "Stylo cristal up Vert BIC",
+"price": 2.50
+},
+{
+"name": "Marqueur tableau effaçable sigmaflo Bleu MONAMI Réf : 159823",
+"price": 12.00
+},
+{
+"name": "Fluorescent textliner 46 Rose FABER CASTELL Réf : 154828",
+"price": 10.00
+},
+{
+"name": "Stylo à bille Rouge 100 INKJOY Réf : 50957140",
+"price": 2.00
+},
+{
+"name": "Stylo cristal up Rouge BIC",
+"price": 2.50
+},
+{
+"name": "Gomme BIC Plast Office",
+"price": 5.00
+},
+{
+"name": "Stylo à bille pointe 1.0mm Rose KRISH TRI-3",
+"price": 2.50
+},
+{
+"name": "Crayon noir HB2 FABER CASTELL REF : 1111",
+"price": 3.00
+},
+{
+"name": "Stylo à bille Tri Flow 1mm Turquoise FABER CASTELL Réf : 340853",
+"price": 3.00
+},
+{
+"name": "Gomme Petit Modèle FABER CASTELL Réf : 188672",
+"price": 3.00
+},
+{
+"name": "Fluorescent Textliner 48 Orange FABER CASTEL Réf : 154815",
+"price": 10.00
+},
+{
+"name": "Stylo cristal soft Bleu BIC Réf : 03475",
+"price": 2.00
+},
+{
+"name": "Fluorescent Textliner 48 Vert FABER CASTEL Réf : 154863",
+"price": 10.00
+},
+{
+"name": "Marqueur tableau effaçable sigmaflo Noir MONAMI Réf : 59816",
+"price": 12.00
+},
+{
+"name": "Stylo à bille Tri Flow 1mm Bleu FABER CASTELL Réf : 143351",
+"price": 3.00
+},
+{
+"name": "Porte mine matic original 0.5 BIC Réf : 2652",
+"price": 10.00
+},
+{
+"name": "Stylo à encre gel-ocity fine 0.5mm Bleu BIC",
+"price": 6.00
+},
+{
+"name": "Feutre velleda Bleu BIC Réf : 172109",
+"price": 11.00
+}
+]
+}
+<END_JSON>
+Instructions:
+
+
+When I send you a photo, read the items and their quantities from the list in the image.
+
+Match each item to the database above.
+
+
+If you find an exact match → use that price.
+
+If you do NOT find the item in the database → tell me it was not found and give me a reasonable estimated price in MAD based on typical school-supply prices in Morocco.
+
+Calculate the total for each item: price × quantity.
+
+Sum all totals to give me the Grand Total in MAD.
+
+Always show the detailed breakdown like this:
+Notebook – 10 × 2 = 20 MAD
+Pen – 3 × 5 = 15 MAD
+[Item Not Found: Glue] – Estimated Price = 12 × 1 = 12 MAD
+TOTAL: 47 MAD
+css
+Copier
+Modifier
+Let’s start. I will send you a photo next.
