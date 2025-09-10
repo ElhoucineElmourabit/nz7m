@@ -1,0 +1,19 @@
+dotenv
+
+django
+# env variables
+django-environ
+# django decoration
+django-crispy-forms
+crispy-bootstrap5
+
+# upload photos
+supabase
+
+
+# PostgreSQL driver 
+psycopg2
+
+#image
+Pillow
+

@@ -1,0 +1,53 @@
+{% extends "customer_register/base.html" %} {% block content %}
+<table class="table table-borderless">
+  <thead class="border-bottom font-weight-bold">
+    <tr>
+      <td>Full Name</td>
+      <td>Phone Number</td>
+      <td>Booklist</td>
+      <td>Created at</td>
+      <td>Order Finished</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for customer in customer_list %}
+    <tr>
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.phone_number }}</td>
+      <td>
+        {% if customer.request_photo %}
+            <a href="{{ customer.request_photo }}" target="_blank">
+            <img
+                src="{{ customer.request_photo }}"
+                alt="Customer photo"
+                style="
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                border-radius: 8px;
+                cursor: pointer;
+                "
+            />
+            </a>
+        {% else %}
+            <span>No image</span>
+        {% endif %}
+      </td>
+
+      <td>{{customer.created_at}}</td>
+      <td style="text-align: center;">{% if customer.order_finished %} ✅ {% else %} ❌ {% endif %}</td>
+      <td>
+        <a href="{% url 'toggle_order_finished' customer.id %}" class="btn text-secondary px-0">
+            {% if customer.order_finished %}
+            <i class="fas fa-undo"></i> <!-- Undo if finished -->
+            {% else %}
+            <i class="fas fa-check"></i> <!-- Mark as finished -->
+            {% endif %}
+        </a>
+        </td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
